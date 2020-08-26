@@ -14,4 +14,6 @@ output = [
 ```
 
 # Use
-Simply edit the credentials in `configurations/credentials.txt` and run `main.py`. Logging is on by default.
+Simply edit the credentials in `configurations/credentials.txt` and run `main.py`. See [MasonWang025/mailing-client-python](https://github.com/MasonWang025/mailing-client-python) for mroe information regarding setting up email access through IMAP. 
+
+Logging is on by default, so code structure and flow should be apparent after a first run.
