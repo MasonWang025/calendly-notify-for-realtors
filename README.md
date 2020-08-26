@@ -2,7 +2,7 @@
 
 Scripts to handle Calendly confirmation emails for realtor showing schedules. 
 
-Calendly does not support *bcc*, thus exposing buyer and seller contact information. The code here solves this by allowing extraction of information and automated notificaitons.
+**Calendly does not support *bcc*, thus exposing buyer and seller contact information. The code here solves this by allowing extraction of information and automated notificaitons.**
 
 Example (`CalendlyNotify.get_calendly_events`):
 ```python
