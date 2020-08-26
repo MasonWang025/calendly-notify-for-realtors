@@ -15,7 +15,7 @@ class CalendlyNotify:
         for subject in subjects:
             calendly_event = {}
             parts = subject.split("-")
-            calendly_event["event"] = parts[0].split(":")[0].strip().lower()
+            calendly_event["event-type"] = parts[0].split(":")[0].strip().lower()
             calendly_event["datetime"] = datetime_from_calendly_str(parts[1].strip())
             calendly_event["event"] = parts[2].strip().replace("\n", "").replace("\r", "")
             self.calendly_events.append(calendly_event)
