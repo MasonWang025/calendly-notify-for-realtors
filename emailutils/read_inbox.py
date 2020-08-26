@@ -44,7 +44,7 @@ def get_emails(password, email_address, only_select_unread=True, read_receipt=Fa
                 else:
                     # if the message isn't multipart, just extract it
                     mail_content = message.get_payload()
-
-                print(f'From: {mail_from}')
-                print(f'Subject: {mail_subject}')
-                print(f'Content: {mail_content}')
+                if not ("calendly" in mail_from.lower()):
+                    print(f'From: {mail_from}')
+                    print(f'Subject: {mail_subject}')
+                    # print(f'Content: {mail_content}')
