@@ -2,7 +2,9 @@ import email
 import imaplib
 
 
-def get_emails(password, email_address, only_select_unread=True, read_receipt=False):
+def get_emails(email_address, password, only_select_unread=True, read_receipt=False, *, log=False):
+    emails_list = []  # list of email objects to return
+
     # connect to the server and go to its inbox
     server = imaplib.IMAP4_SSL('imap.gmail.com')  # port 993
 
@@ -33,18 +35,15 @@ def get_emails(password, email_address, only_select_unread=True, read_receipt=Fa
                 mail_from = message['from']
                 mail_subject = message['subject']
 
-                # if not all plain text, seperate from annexes
-                if message.is_multipart():
-                    mail_content = ''
-                    # if multipart, loop through payload
-                    for part in message.get_payload():
-                        # if the content type is text/plain we extract it
-                        if part.get_content_type() == 'text/plain' or part.get_content_type() == 'text/html':
-                            mail_content += part.get_payload()
-                else:
-                    # if the message isn't multipart, just extract it
-                    mail_content = message.get_payload()
-                if not ("calendly" in mail_from.lower()):
-                    print(f'From: {mail_from}')
-                    print(f'Subject: {mail_subject}')
-                    # print(f'Content: {mail_content}')
+                # PLEASE SEE MasonWang025/mailing-client-python for extracting content from emails
+
+                emails_list.append({
+                    "from": mail_from,
+                    "subject": mail_subject,
+                })
+
+                if log:
+                    log_subject = (mail_subject[:21] + '..') if len(mail_subject) > 21 else mail_subject
+                    print(f'Adding [{log_subject}] (from {mail_from}).')
+
+    return emails_list

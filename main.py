@@ -1,12 +1,10 @@
-from emailutils import read_inbox
-from emailutils import send_email
+from CalendlyNotify import CalendlyNotify
 
 
 def main():
     credentials = open("configurations/credentials.txt", 'r').readlines()
-    email_address, password = credentials[0], credentials[1]
-
-    read_inbox.get_emails(email_address, password)
+    calendly = CalendlyNotify(credentials[0], credentials[1], log=True)
+    calendly.get_calendly_events()
 
 
 if __name__ == "__main__":
